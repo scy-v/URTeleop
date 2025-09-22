@@ -1,0 +1,9 @@
+{
+    "documentId": "ur5",
+    "assemblyName": "urdf_active_gello_urdf",
+    "outputFormat": "urdf",
+    "merge_stls": "all",
+    "simplify_stls": true,
+    "max_stl_size": 0.4,
+    "additionalUrdfFile": "/mujoco.xml"
+}

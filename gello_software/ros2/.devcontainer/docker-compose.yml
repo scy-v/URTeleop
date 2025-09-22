@@ -1,0 +1,10 @@
+services:
+  gello-ros2: 
+    build: .
+    privileged: true
+    restart: no
+    network_mode: host
+    volumes:
+      - ../../:/workspace
+      - /dev/serial/by-id:/dev/serial/by-id
+      
