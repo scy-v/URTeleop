@@ -1,7 +1,7 @@
 robot:
   _target_: gello.robots.ur.URRobot # Robot Type
   robot_ip: 192.168.60.1            # Robot IP address
-  no_gripper: False                 # Whether to control gripper
+  no_gripper: True                 # Whether to control gripper
   gripper_port: /dev/ttyUSB0        # Gripper serial port
   gripper_binary_mode: True         # Use discrete (binary) gripper control
   reverse_gripper: False            # Reverse gripper open/close direction

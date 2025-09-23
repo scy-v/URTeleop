@@ -71,9 +71,9 @@ class URRobot(Robot):
         Args:
             joint_state (np.ndarray): The state to command the leader robot to.
         """
-        velocity = 0.4
+        velocity = 0.5
         # velocity = 0.5
-        acceleration = 0.4
+        acceleration = 0.5
         # acceleration = 0.5
         dt = 1.0 / 500  # 2ms
         lookahead_time = 0.2

@@ -218,6 +218,7 @@ def move_to_start_position(
             return
         reset_joints = np.array(left_cfg["agent"]["start_joints"])
     curr_joints = env.get_obs()["joint_positions"]
+    reset_joints = np.append(reset_joints, 1)
     
     if not robot._use_gripper:
         reset_joints = reset_joints[:6]
