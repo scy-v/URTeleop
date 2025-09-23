@@ -1,22 +1,22 @@
 robot:
-  _target_: gello.robots.ur.URRobot
-  robot_ip: 192.168.60.1
-  no_gripper: True
-  gripper_port: /dev/ttyUSB0 
-  gripper_binary_mode: True
-  reverse_gripper: False 
-  gripper_thresh: 700
+  _target_: gello.robots.ur.URRobot # Robot Type
+  robot_ip: 192.168.60.1            # Robot IP address
+  no_gripper: False                 # Whether to control gripper
+  gripper_port: /dev/ttyUSB0        # Gripper serial port
+  gripper_binary_mode: True         # Use discrete (binary) gripper control
+  reverse_gripper: False            # Reverse gripper open/close direction
+  gripper_thresh: 700               # Threshold for binary mode gripper closure
 
 agent:
   _target_: gello.agents.gello_agent.GelloAgent
-  port: "/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A50285BI-if00-port0"
+  port: "/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A50285BI-if00-port0"  # Master arm port
   dynamixel_config:
     _target_: gello.agents.gello_agent.DynamixelRobotConfig
-    joint_ids: [1, 2, 3, 4, 5, 6]
-    joint_offsets: [4.712, 4.712, 4.712, 4.712, 4.712, 3.142]
-    joint_signs: [1, 1, -1, 1, 1, 1]
-    gripper_config: [7, 2.51572849, 3.47906843] #id, min, max
-  start_joints: [1.5707963267948966, -1.5707963267948966, 1.5707963267948966, -1.5707963267948966, -1.5707963267948966, 0]
+    joint_ids: [1, 2, 3, 4, 5, 6]                        # Dynamixel joint IDs
+    joint_offsets: [4.712, 4.712, 4.712, 4.712, 4.712, 3.142]  # Offsets after gello_get_offset.py
+    joint_signs: [1, 1, -1, 1, 1, 1]                    # Joint direction signs
+    gripper_config: [7, 2.51572849, 3.47906843]         # Gripper ID, min, max values
+  start_joints: [1.5707963267948966, -1.5707963267948966, 1.5707963267948966, -1.5707963267948966, -1.5707963267948966, 0]  # Initial joint positions
 
-hz: 30
-max_steps: 1000
+hz: 30          # Control loop frequency
+max_steps: 1000 # Maximum number of steps
