@@ -1,9 +1,0 @@
-{
-    "python.autoComplete.extraPaths": [
-        "/home/suchenyu/teleop/devel/lib/python3/dist-packages",
-        "/home/suchenyu/ur_robot/devel/lib/python3/dist-packages",
-        "/home/suchenyu/kmriiwa_only_iiwa/devel/lib/python3/dist-packages",
-        "/home/suchenyu/kmriiwa/devel/lib/python3/dist-packages",
-        "/opt/ros/noetic/lib/python3/dist-packages"
-    ]
-}
