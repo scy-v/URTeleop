@@ -13,6 +13,7 @@ class DhGripper:
         self.threshold = threshold
         self.alpha = 1
         self.last_pos = 0
+        self.first = True
         self._lock = threading.Lock()
         self.gripper = PGE(port=port)
         # 启动后台线程定期更新位置
@@ -28,7 +29,7 @@ class DhGripper:
             with self._lock:
                 pos = self.gripper.read_pos(is_read=True) 
             self._position = pos
-            time.sleep(0.01)  
+            time.sleep(0.1)  
             
     def get_current_position(self):
         """
@@ -39,7 +40,7 @@ class DhGripper:
             print("未收到位置数据")
         return pos
 
-    def move(self, position: float, speed: float, force: float) -> None:
+    def move(self, position: float, speed: float = 100, force: float = 80) -> None:
         """
         Move the gripper to target position with smoothing.
 
@@ -60,16 +61,15 @@ class DhGripper:
 
         # target_pos = self._smooth(target_pos)
 
+        if self.first:
+            self.gripper.set_force(val=force)
+            self.gripper.set_vel(val=speed)
+            self.first = False
         try:
             with self._lock:
-                self.gripper.set_force(val=force)
-                self.gripper.set_vel(val=speed)
                 self.gripper.set_pos(val=int(target_pos), is_read=False, blocking=False)
         except Exception as e:
             print(f"[Gripper Move Error] {e}")
-
-        time.sleep(0.008)
-
 
     def _smooth(self, new_value: float) -> float:
         """一阶低通滤波"""

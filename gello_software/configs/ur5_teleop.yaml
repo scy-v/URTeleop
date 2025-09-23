@@ -1,8 +1,8 @@
 robot:
   _target_: gello.robots.ur.URRobot # Robot Type
   robot_ip: 192.168.60.1            # Robot IP address
-  no_gripper: True                 # Whether to control gripper
-  gripper_port: /dev/ttyUSB0        # Gripper serial port
+  no_gripper: False                 # Whether to control gripper
+  gripper_port: /dev/ttyUSB1        # Gripper serial port
   gripper_binary_mode: True         # Use discrete (binary) gripper control
   reverse_gripper: False            # Reverse gripper open/close direction
   gripper_thresh: 700               # Threshold for binary mode gripper closure
@@ -18,5 +18,5 @@ agent:
     gripper_config: [7, 2.51572849, 3.47906843]         # Gripper ID, min, max values
   start_joints: [1.5707963267948966, -1.5707963267948966, 1.5707963267948966, -1.5707963267948966, -1.5707963267948966, 0]  # Initial joint positions
 
-hz: 30          # Control loop frequency
+hz: 60          # Control loop frequency
 max_steps: 1000 # Maximum number of steps

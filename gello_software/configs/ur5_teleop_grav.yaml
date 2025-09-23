@@ -53,7 +53,7 @@ controller:
     kd: 0.04315069084
 
   gripper_feedback:
-    enable: True
+    enable: False
 
 teleop:
   enable: true

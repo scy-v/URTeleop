@@ -72,9 +72,7 @@ class URRobot(Robot):
             joint_state (np.ndarray): The state to command the leader robot to.
         """
         velocity = 0.5
-        # velocity = 0.5
         acceleration = 0.5
-        # acceleration = 0.5
         dt = 1.0 / 500  # 2ms
         lookahead_time = 0.2
         gain = 100
@@ -90,7 +88,7 @@ class URRobot(Robot):
             if self.reverse_gripper:
                 joint_state[-1] = 1 - joint_state[-1]
             gripper_pos = joint_state[-1] * 1000
-            self.gripper.move(gripper_pos, 100, 80)
+            self.gripper.move(gripper_pos)
         # import time
         # record_time_now = time.time()
         # print("move hz: ", 1/ (record_time_now-self.record_time), gripper_pos)
