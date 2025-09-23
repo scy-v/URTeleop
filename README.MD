@@ -1,4 +1,5 @@
-# 📦 Gello and DHGripper: Setup and Usage
+# 📦 [Gello](https://github.com/wuphilipp/gello_software) and [DHGripper](https://github.com/han-xudong/pyDHgripper): Setup and Usage
+
 
 ```bash
 # 1. Create and activate environment
