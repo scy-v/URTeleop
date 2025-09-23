@@ -6,7 +6,7 @@ from typing import Tuple
 
 import numpy as np
 import tyro
-
+from omegaconf import OmegaConf
 from gello.dynamixel.driver import DynamixelDriver
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -16,6 +16,9 @@ MENAGERIE_ROOT: Path = Path(__file__).parent / "third_party" / "mujoco_menagerie
 
 @dataclass
 class Args:
+    config: str = "configs/ur5_teleop.yaml"
+    """Path to the configuration YAML file."""
+    
     port: str = "/dev/ttyUSB0"
     """The port that GELLO is connected to."""
 
@@ -95,6 +98,16 @@ def get_config(args: Args) -> None:
 
 
 def main(args: Args) -> None:
+    args_tmp = tyro.cli(Args)
+
+    cfg_dict = OmegaConf.to_container(OmegaConf.load(args_tmp.config), resolve=True)
+    
+    args = Args(
+        port=cfg_dict["agent"]["port"],
+        start_joints=tuple(cfg_dict["agent"]["start_joints"]),
+        joint_signs=tuple(cfg_dict["agent"]["dynamixel_config"]["joint_signs"]),
+    )
+
     get_config(args)
 
 

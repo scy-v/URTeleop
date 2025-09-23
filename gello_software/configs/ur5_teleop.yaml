@@ -1,7 +1,7 @@
 robot:
   _target_: gello.robots.ur.URRobot
   robot_ip: 192.168.60.1
-  no_gripper: False
+  no_gripper: True
   gripper_port: /dev/ttyUSB0 
   gripper_binary_mode: True
   reverse_gripper: False 
@@ -16,7 +16,7 @@ agent:
     joint_offsets: [4.712, 4.712, 4.712, 4.712, 4.712, 3.142]
     joint_signs: [1, 1, -1, 1, 1, 1]
     gripper_config: [7, 2.51572849, 3.47906843] #id, min, max
-  start_joints: [1.5707963267948966, -1.5707963267948966, 1.5707963267948966, -1.5707963267948966, -1.5707963267948966, 0, 1.0]
+  start_joints: [1.5707963267948966, -1.5707963267948966, 1.5707963267948966, -1.5707963267948966, -1.5707963267948966, 0]
 
 hz: 30
 max_steps: 1000
