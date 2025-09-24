@@ -17,6 +17,7 @@ pip install -e .
 pip install -e third_party/DynamixelSDK/python
 
 cd <pyDHgripper>
+pip install -r requirements.txt
 pip install -e .
 
 # 4. Get master-slave arm offset
